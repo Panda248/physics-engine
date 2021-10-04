@@ -1,10 +1,20 @@
 package physics.primitives.java;
 
-public class ColliderCircle {
-    private float radius;
+import org.newdawn.slick.geom.Vector2f;
 
+public class ColliderCircle {
+    public float radius;
+    public float x;
+    public float y;
     public float getRadius()
     {
         return this.radius;
+    }
+    public boolean isColliding()
+    {
+        if()
+        {
+
+        }
     }
 }

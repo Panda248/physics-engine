@@ -56,16 +56,18 @@ public class Box {
         return new Vector2f(this.rigidbody.getPosition()).add(this.halfSize);
     }
 
-    public Vector2f[] getVertices;{
+    public Vector2f[] getVertices(){
         Vector2f min = getMin();
         Vector2f max = getMax();
 
         Vector2f[] vertices = {new Vector2f(min.x, min.y), new Vector2f(min.x, max.y), new Vector2f(max.x, min.y), new Vector2f(max.x, max.y)};
 
-        if (rigidbody.getRotation() != 0.0f){
-            for (Vector2f vert : vertices){
-                JMath.rotate(vert, this.rigidbody.getPosition(), this.rigidbody.getRotation());
-            }
-        }
+       /*if (rigidbody.getRotation() != 0.0f){
+           for (Vector2f vert : vertices){
+                //TODO : implement rotation
+               JMath.rotate(vert, this.rigidbody.getPosition(), this.rigidbody.getRotation());
+          }
+       }*/
+        return vertices;
     }
 }

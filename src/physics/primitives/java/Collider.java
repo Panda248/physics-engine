@@ -18,9 +18,9 @@ public class Collider extends Component {
         return this.width;
     }
 
-    public void Colliding()
+    public void isColliding()
     {
-                
+        //if()
     }
 
 }
