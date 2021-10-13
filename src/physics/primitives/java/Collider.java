@@ -1,9 +1,9 @@
 package physics.primitives.java;
 
 
-import components.Component;
+//import components.Component;
 
-public class Collider extends Component {
+public class Collider {
     public float width;
     public float height;
     public float x;

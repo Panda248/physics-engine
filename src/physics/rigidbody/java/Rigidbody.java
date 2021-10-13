@@ -1,9 +1,9 @@
 package physics.rigidbody.java;
 
-import components.Component;
+//import components.Component;
 import org.joml.Vector2f;
 
-public class Rigidbody extends Component {
+public class Rigidbody  {
     private Vector2f position = new Vector2f();
     private float rotation = 0.0f;
 

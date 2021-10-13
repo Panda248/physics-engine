@@ -11,6 +11,9 @@ public class Circle {
     public float radius = 10f;
     public float x = 100f;
     public float y = 100f;
+    public float xVel;
+    public float yVel;
+    public float accel = 1f;
 
     private Rigidbody body = null;
 

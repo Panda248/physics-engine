@@ -10,11 +10,11 @@ public class ColliderCircle {
     {
         return this.radius;
     }
-    public boolean isColliding()
+    //public boolean isColliding()
     {
-        if()
-        {
+        //if()
+        //{
 
-        }
+        //}
     }
 }
