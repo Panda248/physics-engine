@@ -1,15 +1,20 @@
 package physics;
 
 import org.newdawn.slick.*;
-import org.joml.*;
 import physics.primitives.java.Box;
 import physics.primitives.java.Circle;
+import renderer.Move;
+import renderer.Draw;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public class main extends BasicGame
 {
+    private Draw graphics = new Draw();
+    private Move drip = new Move();
     private Box x = new Box();
     private Circle y = new Circle();
 
@@ -25,13 +30,16 @@ public class main extends BasicGame
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
+        x.xVel = x.accel;
+        x.accel *= 1.06f;
 
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
-        x.draw();
-        y.draw();
+        graphics.drawBox(x);
+        graphics.drawEllipse(y);
+        drip.shiftBox(x, x.xVel, x.yVel);
     }
 
     public static void main(String[] args)

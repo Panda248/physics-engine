@@ -1,6 +1,8 @@
 package physics.primitives.java;
 
 
+//import components.Component;
+
 public class Collider {
     public float width;
     public float height;
@@ -16,9 +18,9 @@ public class Collider {
         return this.width;
     }
 
-    public boolean Colliding()
+    public void isColliding()
     {
-                
+        //if()
     }
 
 }
