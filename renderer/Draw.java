@@ -9,10 +9,10 @@ public class Draw {
     Graphics g = new Graphics();
     public void drawBox(Box x)
     {
-        g.drawRect(x.x,x.y,x.width,x.height);
+        g.drawRect(x.getX(),x.getY(),x.getWidth(),x.getHeight());
     }
     public void drawEllipse(Circle x)
     {
-        g.drawOval(x.x,x.y,x.radius*2, x.radius*2);
+        g.drawOval(x.getX(),x.getY(),x.getRadius()*2, x.getRadius()*2);
     }
 }

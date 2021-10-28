@@ -30,8 +30,8 @@ public class main extends BasicGame
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        x.xVel = x.accel;
-        x.accel *= 1.06f;
+        x.setXVel(x.getAccel());
+        x.setAccel(x.getAccel()+(x.getAccel()*.06f));
 
     }
 
@@ -39,7 +39,7 @@ public class main extends BasicGame
     public void render(GameContainer gc, Graphics g) throws SlickException {
         graphics.drawBox(x);
         graphics.drawEllipse(y);
-        drip.shiftBox(x, x.xVel, x.yVel);
+        drip.shiftBox(x, x.getXVel(), x.getYVel());
     }
 
     public static void main(String[] args)

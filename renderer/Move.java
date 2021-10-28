@@ -8,13 +8,13 @@ public class Move {
 
    public void shiftBox(Box x, float xShift, float yShift)
     {
-        x.x+=xShift;
-        x.y+=yShift;
+        x.setX(x.getX()+xShift);
+        x.setY(x.getY()+yShift);
     }
-    public void shiftEllipse(Circle x, int xShift, int yShift)
+    public void shiftEllipse(Circle x, float xShift, float yShift)
     {
-        x.x+=xShift;
-        x.y+=yShift;
+        x.setX(x.getX()+xShift);
+        x.setY(x.getY()+yShift);
     }
 
 
