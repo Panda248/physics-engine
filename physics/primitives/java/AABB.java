@@ -26,5 +26,7 @@ public class AABB {
     public Vector2f getMax(){
         return new Vector2f(this.rigidbody.getPosition()).add(this.halfSize);
     }
-
+    public boolean aabbCollide(){
+        return true;
+    }
 }

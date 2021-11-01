@@ -3,6 +3,7 @@ package physics;
 import org.newdawn.slick.*;
 import physics.primitives.java.Box;
 import physics.primitives.java.Circle;
+import renderer.Gravity;
 import renderer.Move;
 import renderer.Draw;
 
@@ -15,8 +16,10 @@ public class main extends BasicGame
 {
     private Draw graphics = new Draw();
     private Move drip = new Move();
-    private Box x = new Box();
-    private Circle y = new Circle();
+    Circle y;
+    Box x;
+    Box z;
+    Gravity grav;
 
     public main(String gamename)
     {
@@ -25,21 +28,30 @@ public class main extends BasicGame
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-
+        grav = new Gravity();
+        x = new Box(100f,240f, 50f, 50f);
+        z = new Box(500f,240f,50f,50f);
+        z.createCollider();
+        x.createCollider();
     }
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        x.setXVel(x.getAccel());
-        x.setAccel(x.getAccel()+(x.getAccel()*.06f));
+        grav.gravBox(x);
+        x.setYVel(x.getYAccel());
 
+        /*x.setXVel(x.getAccel());
+        x.setAccel((x.getAccel()*1.06f));
+        x.collider.update(x.getX(),x.getY(),x.getWidth(),x.getHeight());
+        x.bounce(z.collider);*/
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
         graphics.drawBox(x);
-        graphics.drawEllipse(y);
+        graphics.drawBox(z);
         drip.shiftBox(x, x.getXVel(), x.getYVel());
+
     }
 
     public static void main(String[] args)

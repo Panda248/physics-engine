@@ -10,13 +10,17 @@ import java.util.Vector;
 public class Box {
     private Vector2f size = new Vector2f();
     private Vector2f halfSize = new Vector2f();
-    private float width = 50f;
-    private float height = 100f;
-    private float x = 200f;
-    private float y = 100f;
+    private float width;
+    private float height;
+    private float x;
+    private float y;
     private float xVel = 0f;
     private float yVel = 0f;
-    private float accel = 1f;
+    private float xAccel = 1f;
+    private float yAccel = 1f;
+    private boolean right;
+    private boolean up;
+    public Collider collider;
     private Rigidbody rigidbody = null;
 
     public float getWidth()
@@ -43,9 +47,13 @@ public class Box {
     {
         return this.yVel;
     }
-    public float getAccel()
+    public float getXAccel()
     {
-        return this.accel;
+        return this.xAccel;
+    }
+    public float getYAccel()
+    {
+        return this.yAccel;
     }
     public void setX(float amount)
     {
@@ -55,10 +63,11 @@ public class Box {
     {
         this.y = amount;
     }
-    public void setAccel(float amount)
+    public void setXAccel(float amount)
     {
-        this.accel = amount;
+        this.xAccel = amount;
     }
+    public void setYAccel(float amount) {this.yAccel = amount;}
     public void setXVel( float amount)
     {
         this.xVel = amount;
@@ -71,7 +80,13 @@ public class Box {
     public Box(){
         this.halfSize = new Vector2f(size).mul(0.5f);
     }
-
+    public Box(float x, float y, float width, float height)
+    {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
     public Box(Vector2f min, Vector2f max){
         this.size = new Vector2f(max).sub(min);
         this.halfSize = new Vector2f(max).sub(min);
@@ -79,12 +94,28 @@ public class Box {
 
     public void createCollider()
     {
-        Collider placeHolder = new Collider();
-        placeHolder.width = this.width;
-        placeHolder.height = this.height;
-        placeHolder.x = this.x;
-        placeHolder.y = this.y;
+        collider = new Collider();
+        collider.width = this.width;
+        collider.height = this.height;
+        collider.x = this.x;
+        collider.y = this.y;
     }
+    public void bounce(Collider collidee)
+    {
+        if(collider.isColliding(collidee)) {
+            if (collider.isCollidingSide(collidee)) {
+                this.x = collidee.getX() - collidee.getWidth()-1;
+                this.xAccel *= -0.2f;
+                this.xVel *= -.1f;
+
+            }
+            if (collider.isCollidingTop(collidee)) {
+                this.yVel *= 0;
+
+            }
+        }
+    }
+
 
     public Vector2f getMin(){
         return new Vector2f(this.rigidbody.getPosition()).sub(this.halfSize);
