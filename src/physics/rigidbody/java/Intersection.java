@@ -2,16 +2,14 @@ package physics.rigidbody.java;
 
 import org.joml.Vector2f;
 import physics.primitives.java.AABB;
-import physics.primitives.java.Box;
 import physics.primitives.java.Circle;
-import renderer.Line;
+import physics.renderer.Line;
 
 public class Intersection {
     public static boolean pointOnLine(Vector2f point, Line line){
         float dy = line.getEnd().y - line.getStart().y();
         float dx = line.getEnd().x - line.getStart().x();
         float m = dy/dx;
-
         float b = line.getEnd().y - (m*line.getEnd().x);
 
         return point.y == m*point.x+b;
@@ -32,8 +30,6 @@ public class Intersection {
     }
 
    /* TODO : public static boolean pointInBox(Vector2f point, Box box){
-
-
        return ;
    }*/
 }

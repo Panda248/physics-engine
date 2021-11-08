@@ -1,39 +1,74 @@
 package physics.primitives.java;
 
 
-//import org.newdawn.slick.geom.Vector2f;
 import org.w3c.dom.css.Rect;
 import org.joml.Vector2f;
 import physics.rigidbody.java.Rigidbody;
+
 import java.util.Vector;
 
 public class Circle {
-    public float radius = 10f;
-    public float x = 100f;
-    public float y = 100f;
+    private final float radius = 10f;
+    private       float x      = 100f;
+    private float y      = 100f;
+    private float xVel;
+    private float yVel;
+    private float accel  = 1f;
 
-    private Rigidbody body = null;
+    private final Rigidbody body = null;
 
-    public float getRadius(){
+    public float getRadius() {
         return this.radius;
     }
-    public float getX()
-    {
+
+    public float getX() {
         return this.x;
     }
-    public float getY()
-    {
+
+    public float getY() {
         return this.y;
     }
-    public void createCollider()
-    {
-        ColliderCircle x = new ColliderCircle();
-        x.radius = this.radius;
-        x.x = this.x;
-        x.y = this.y;
+
+    public float getXVel() {
+        return this.xVel;
     }
-    public Vector2f getCenter(){
+
+    public float getYVel() {
+        return this.yVel;
+    }
+
+    public float getAccel() {
+        return this.accel;
+    }
+
+    public void setX(float amount) {
+        this.x = amount;
+    }
+
+    public void setY(float amount) {
+        this.y = amount;
+    }
+
+    public void setAccel(float amount) {
+        this.accel = amount;
+    }
+
+    public void setXVel(float amount) {
+        this.xVel = amount;
+    }
+
+    public void setYVel(float amount) {
+        this.yVel = amount;
+    }
+
+    public void createCollider() {
+        ColliderCircle x = new ColliderCircle();
+        x.setX(this.x);
+        x.setY(this.y);
+        x.setRadius(this.radius);
+    }
+
+    public Vector2f getCenter() {
         return body.getPosition();
     }
 }
-

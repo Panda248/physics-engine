@@ -1,19 +1,19 @@
 package physics;
 
 import org.newdawn.slick.*;
-import org.joml.*;
 import physics.primitives.java.Box;
 import physics.primitives.java.Circle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import physics.renderer.Draw;
 
 
 public class main extends BasicGame
 {
+    private final Box x = new Box(100, 200, 50, 50);
+    private final Circle y = new Circle();
+
     private Draw graphics = new Draw();
-    private Box x = new Box();
-    private Circle y = new Circle();
 
     public main(String gamename)
     {
@@ -33,7 +33,7 @@ public class main extends BasicGame
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
         graphics.drawBox(x);
-        graphics.drawEllipse(y);
+
     }
 
     public static void main(String[] args)
