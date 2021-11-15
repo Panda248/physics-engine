@@ -1,11 +1,24 @@
-package physics.renderer;
+package renderer;
 import physics.primitives.java.*;
 
 public class Gravity {
-    private final float accel = 1.2f;
-
+    private final float gravityAccel = 0.01f;
+    private  float gravSpeed = 0;
+    private float terminalVel = 10f;
     public void gravBox(Box box)
     {
-        box.setYAccel(box.getYAccel()*accel);
+        if(box.getYVel() < terminalVel)
+        {
+            this.gravSpeed+=gravityAccel;
+            box.setYVel(box.getYVel()+gravSpeed);
+        }
+    }
+    public void gravCircle(Circle circle)
+    {
+        if(circle.getYVel() < terminalVel)
+        {
+            this.gravSpeed+=gravityAccel;
+            circle.setYAccel(circle.getYAccel() + gravSpeed);
+        }
     }
 }
