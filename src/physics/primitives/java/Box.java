@@ -40,7 +40,7 @@ public class Box {
     {
         return this.y;
     }
-    
+
     public float getXVel()
     {
         return this.xVel;
@@ -109,15 +109,16 @@ public class Box {
     public void bounce(Collider collidee)
     {
         if(collider.isColliding(collidee)) {
-            if (collider.isCollidingSide(collidee)) {
+            /* (collider.isCollidingSide(collidee)) {
                 this.x = collidee.getX() - collidee.getWidth()-1;
                 this.xAccel *= -0.2f;
                 this.xVel *= -.1f;
 
-            }
+            }*/
             if (collider.isCollidingTop(collidee)) {
-                this.yVel *= 0;
-
+                this.yVel *= -0.23;
+                this.yAccel *= 0.1;
+                this.y = collidee.getY() - collidee.getHeight();
             }
         }
     }
