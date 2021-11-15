@@ -15,13 +15,11 @@ public class Box {
     private float x;
     private float y;
     private float xVel = 0f;
-    private float yVel = 0f;
-    private float xAccel = 1f;
-    private float yAccel = 1f;
-    private boolean right;
-    private boolean up;
-    public        Collider  collider;
-    private final Rigidbody rigidbody = null;
+    private float yVel = 1f;
+    private float xAccel = 0f;
+    private float yAccel = 0f;
+    public Collider collider;
+    private Rigidbody rigidbody = null;
 
     public float getWidth()
     {
@@ -31,7 +29,6 @@ public class Box {
     {
         return this.height;
     }
-
     public float getX()
     {
         return this.x;
@@ -40,7 +37,6 @@ public class Box {
     {
         return this.y;
     }
-
     public float getXVel()
     {
         return this.xVel;
@@ -49,7 +45,6 @@ public class Box {
     {
         return this.yVel;
     }
-
     public float getXAccel()
     {
         return this.xAccel;
@@ -58,7 +53,6 @@ public class Box {
     {
         return this.yAccel;
     }
-
     public void setX(float amount)
     {
         this.x = amount;
@@ -67,13 +61,11 @@ public class Box {
     {
         this.y = amount;
     }
-
     public void setXAccel(float amount)
     {
         this.xAccel = amount;
     }
     public void setYAccel(float amount) {this.yAccel = amount;}
-
     public void setXVel( float amount)
     {
         this.xVel = amount;
@@ -109,16 +101,28 @@ public class Box {
     public void bounce(Collider collidee)
     {
         if(collider.isColliding(collidee)) {
-            /* (collider.isCollidingSide(collidee)) {
-                this.x = collidee.getX() - collidee.getWidth()-1;
-                this.xAccel *= -0.2f;
-                this.xVel *= -.1f;
-
-            }*/
-            if (collider.isCollidingTop(collidee)) {
-                this.yVel *= -0.23;
-                this.yAccel *= 0.1;
-                this.y = collidee.getY() - collidee.getHeight();
+            switch (this.collider.getDirection(this))
+            {
+                case 'u':
+                    this.y = collidee.getY() + collidee.getHeight() + 1;
+                    this.yAccel *= .25f;
+                    this.yVel *= -.2f;
+                    break;
+                case 'd':
+                    this.y = collidee.getY() - collidee.getHeight() - 1;
+                    this.yAccel *= .25f;
+                    this.yVel *= -.2f;
+                    break;
+                case 'l':
+                    this.x = collidee.getX() - collidee.getWidth() - 1;
+                    this.xAccel *= .25f;
+                    this.yVel *= -.2f;
+                    break;
+                case 'r':
+                    this.x = collidee.getX() + collidee.getWidth() + 1;
+                    this.xAccel *= .25f;
+                    this.yVel *= -.2f;
+                    break;
             }
         }
     }
