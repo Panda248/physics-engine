@@ -14,8 +14,8 @@ public class Box {
     private float height;
     private float x;
     private float y;
-    private float xVel = 0f;
-    private float yVel = 1f;
+    private float xVel = 1f;
+    private float yVel = 0f;
     private float xAccel = 0f;
     private float yAccel = 0f;
     public Collider collider;
@@ -116,12 +116,12 @@ public class Box {
                 case 'l':
                     this.x = collidee.getX() - collidee.getWidth() - 1;
                     this.xAccel *= .25f;
-                    this.yVel *= -.2f;
+                    this.xVel *= -.2f;
                     break;
                 case 'r':
                     this.x = collidee.getX() + collidee.getWidth() + 1;
                     this.xAccel *= .25f;
-                    this.yVel *= -.2f;
+                    this.xVel *= -.2f;
                     break;
             }
         }
