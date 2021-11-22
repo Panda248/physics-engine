@@ -126,6 +126,14 @@ public class Box {
             }
         }
     }
+    
+     public void update()
+    {
+        this.yVel+= this.yAccel;
+        this.y+=this.yVel;
+        this.xAccel+=this.xAccel;
+        this.x+=this.xVel;
+    }
 
 
     public Vector2f getMin(){
